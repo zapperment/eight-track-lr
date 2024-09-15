@@ -1,0 +1,50 @@
+; ------- Bome MIDI Translator: signed project file
+; ------- You can modify this file as you like, but that will invalidate the
+; ------- signature so that it cannot be opened in the BomeBox or MT Player anymore.
+;
+[Preset.0]
+Active=0
+Comments=
+Incoming0=MID3<Incoming Action="MIDI"><Description>CC on Ch. 16</Description><Ports><Port>Novation SL MkIII SL MkIII InControl</Port><Port>Launchpad Pro MK3 LPProMK3 MIDI</Port></Ports><Simple Type="ControlChange"><Channel num="15"/><Value1 var="oo" Type="SetVar"/><Value2 var="pp" Type="SetVar"/></Simple></Incoming>
+Name=Mixer
+Name0=Route SL Mixer CC to Live
+Options0=Actv01Stop00OutO01StMa00000007qq=0if(oo>=41)qq=qq+1if(oo<=48)qq=qq+1if(qq==2)sk2iplabel001B__log>Ignoring non-mixer CCnoexecutelabel0016__log>Routing mixer CC
+Outgoing0=MID3<Outgoing Action="MIDI"><Description>CC on CCh. 16Q</Description><Ports><Port>IAC-Treiber Bome to Live</Port></Ports><Simple Type="ControlChange"><Channel num="15"/><Value1 var="oo"/><Value2 var="pp"/></Simple></Outgoing>
+PresetSwitchIgnore=0
+
+[Preset.1]
+Active=1
+Comments=
+Incoming0=MID3<Incoming Action="MIDI"><Description>Catch CC 119</Description><Ports><Port>IAC Live to Bome</Port></Ports><Simple Type="ControlChange"><Channel num="0" Type="Any"/><Value1 num="0x77"/><Value2 var="zz" Type="SetVar"/></Simple></Incoming>
+Incoming1=MID3<Incoming Action="MIDI"><Description>Catch note ON</Description><Ports><Port>IAC Live to Bome</Port></Ports><Simple Type="NoteOn"><Channel var="oo" Type="SetVar"/><Value1 var="pp" Type="SetVar"/><Value2 var="qq" Type="SetVar"/></Simple></Incoming>
+Incoming2=MID3<Incoming Action="MIDI"><Description>Catch note OFF</Description><Ports><Port>IAC Live to Bome</Port></Ports><Simple Type="NoteOff"><Channel var="oo" Type="SetVar"/><Value1 var="pp" Type="SetVar"/><Value2 var="qq" Type="SetVar"/></Simple></Incoming>
+Incoming3=MID3<Incoming Action="MIDI"><Description>Catch note ON</Description><Ports><Port>IAC Live to Bome</Port></Ports><Simple Type="NoteOn"><Channel var="oo" Type="SetVar"/><Value1 var="pp" Type="SetVar"/><Value2 var="qq" Type="SetVar"/></Simple></Incoming>
+Incoming4=MID3<Incoming Action="MIDI"><Description>Catch note OFF</Description><Ports><Port>IAC Live to Bome</Port></Ports><Simple Type="NoteOff"><Channel var="oo" Type="SetVar"/><Value1 var="pp" Type="SetVar"/><Value2 var="qq" Type="SetVar"/></Simple></Incoming>
+Name=Multi-Sketch
+Name0=Set ZZ
+Name1=Sketch 1/2: Note ON
+Name2=Sketch 1/2: Note OFF
+Name3=Sketch 3/4: Note ON
+Name4=Sketch 3/4: Note OFF
+Options0=Actv01Stop00OutO00StMa0013Log routing message0008if(zz==0)label0039__log>Sketch 1: Now routing to Live to Reason 1 (Ch. 1-8)if(zz==1)label003A__log>Sketch 2: Now routing to Live to Reason 1 (Ch. 9-16)if(zz==2)label0039__log>Sketch 3: Now routing to Live to Reason 2 (Ch. 1-8)if(zz==3)label003A__log>Sketch 4: Now routing to Live to Reason 2 (Ch. 9-16)if(zz==4)label0039__log>Sketch 5: Now routing to Live to Reason 3 (Ch. 1-8)if(zz==5)label003A__log>Sketch 6: Now routing to Live to Reason 3 (Ch. 9-16)if(zz==6)label0039__log>Sketch 7: Now routing to Live to Reason 4 (Ch. 1-8)if(zz==7)label003A__log>Sketch 8: Now routing to Live to Reason 4 (Ch. 9-16)
+Options1=Actv01Stop00OutO00StMa0029Route to Bome to Reason 1 if zz is 0 or 10010label0036__cmt>// zz is global variable set through MIDI CC 119label0022__cmt>// from clip in Ableton Livelabel0034__cmt>// if it is 1, we shift the MIDI channel by 8,label0021__cmt>// e.g. channel 1 becomes 9if(zz==1)oo=oo+8label0006__cmt>label0035__cmt>// this block emulates an AND condition to makelabel0034__cmt>// sure incoming messages are NOT routed if zzlabel0027__cmt>// is something other than 0 or 1if(zz==0)skipif(zz!=1)noexecutelabel0006__cmt>label0031__cmt>// log a message if the rule is applied andlabel002A__cmt>// incoming MIDI messages are routedif(zz==0)label003A__log>Note ON %oo%/%pp%/%qq% to Bome to Reason 1 (ch. 1-8)if(zz==1)label003B__log>Note ON %oo%/%pp%/%qq% to Bome to Reason 1 (ch. 9-16)
+Options2=Actv01Stop00OutO00StMa0029Route to Bome to Reason 1 if zz is 0 or 10010label0036__cmt>// zz is global variable set through MIDI CC 119label0022__cmt>// from clip in Ableton Livelabel0034__cmt>// if it is 1, we shift the MIDI channel by 8,label0021__cmt>// e.g. channel 1 becomes 9if(zz==1)oo=oo+8label0006__cmt>label0035__cmt>// this block emulates an AND condition to makelabel0034__cmt>// sure incoming messages are NOT routed if zzlabel0027__cmt>// is something other than 0 or 1if(zz==0)skipif(zz!=1)noexecutelabel0006__cmt>label0031__cmt>// log a message if the rule is applied andlabel002A__cmt>// incoming MIDI messages are routedif(zz==0)label003B__log>Note OFF %oo%/%pp%/%qq% to Bome to Reason 1 (ch. 1-8)if(zz==1)label003C__log>Note OFF %oo%/%pp%/%qq% to Bome to Reason 1 (ch. 9-16)
+Options3=Actv01Stop00OutO00StMa0029Route to Bome to Reason 2 if zz is 2 or 30010label0036__cmt>// zz is global variable set through MIDI CC 119label0022__cmt>// from clip in Ableton Livelabel0034__cmt>// if it is 3, we shift the MIDI channel by 8,label0021__cmt>// e.g. channel 1 becomes 9if(zz==3)oo=oo+8label0006__cmt>label0035__cmt>// this block emulates an AND condition to makelabel0034__cmt>// sure incoming messages are NOT routed if zzlabel0027__cmt>// is something other than 2 or 3if(zz==2)skipif(zz!=3)noexecutelabel0006__cmt>label0031__cmt>// log a message if the rule is applied andlabel002A__cmt>// incoming MIDI messages are routedif(zz==2)label003A__log>Note ON %oo%/%pp%/%qq% to Bome to Reason 2 (ch. 1-8)if(zz==3)label003B__log>Note ON %oo%/%pp%/%qq% to Bome to Reason 2 (ch. 9-16)
+Options4=Actv01Stop00OutO00StMa0029Route to Bome to Reason 2 if zz is 2 or 30010label0036__cmt>// zz is global variable set through MIDI CC 119label0022__cmt>// from clip in Ableton Livelabel0034__cmt>// if it is 3, we shift the MIDI channel by 8,label0021__cmt>// e.g. channel 1 becomes 9if(zz==3)oo=oo+8label0006__cmt>label0035__cmt>// this block emulates an AND condition to makelabel0034__cmt>// sure incoming messages are NOT routed if zzlabel0027__cmt>// is something other than 2 or 3if(zz==2)skipif(zz!=3)noexecutelabel0006__cmt>label0031__cmt>// log a message if the rule is applied andlabel002A__cmt>// incoming MIDI messages are routedif(zz==2)label003B__log>Note OFF %oo%/%pp%/%qq% to Bome to Reason 2 (ch. 1-8)if(zz==3)label003C__log>Note OFF %oo%/%pp%/%qq% to Bome to Reason 2 (ch. 9-16)
+Outgoing0=None
+Outgoing1=MID3<Outgoing Action="MIDI"><Description>Send note ON</Description><Ports><Port>IAC Bome to Reason 1</Port></Ports><Simple Type="NoteOn"><Channel var="oo"/><Value1 var="pp"/><Value2 var="qq"/></Simple></Outgoing>
+Outgoing2=MID3<Outgoing Action="MIDI"><Description>Send note OFF</Description><Ports><Port>IAC Bome to Reason 1</Port></Ports><Simple Type="NoteOff"><Channel var="oo"/><Value1 var="pp"/><Value2 var="qq"/></Simple></Outgoing>
+Outgoing3=MID3<Outgoing Action="MIDI"><Description>Send note ON</Description><Ports><Port>IAC Bome to Reason 2</Port></Ports><Simple Type="NoteOn"><Channel var="oo"/><Value1 var="pp"/><Value2 var="qq"/></Simple></Outgoing>
+Outgoing4=MID3<Outgoing Action="MIDI"><Description>Send note OFF</Description><Ports><Port>IAC Bome to Reason 2</Port></Ports><Simple Type="NoteOff"><Channel var="oo"/><Value1 var="pp"/><Value2 var="qq"/></Simple></Outgoing>
+PresetSwitchIgnore=0
+
+[Project]
+DefaultInPorts=MIDA0000
+DefaultOutPorts=MIDA0000
+Version=2
+
+[Signatures]
+SigName-1=[Midi Translator Pro Internal]
+Signature-1=G8bpVxsSnuH2ucTIeq7cfYzg/zIwkgjMmyQZwI0sQVy8kuvjUNx+NmmSINgGlBUPZSs4vek09ZN/HKfGKAGKv4sOcPbNTt61MnQ1uYP1fMfY9N/vF3ikwTJPesJip84z/UOmU9IEp8/mBEJzTpNRVhpBdlA+n5ogYfM9j32rEQU=
+SignedBy-1=Patrick Hund
+
