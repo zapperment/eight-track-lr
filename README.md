@@ -27,3 +27,24 @@ This way, you can have clip 1 on track 1 play one Reason device in stand-alone R
 Because Reason allows you to open several songs simultaneously, you can even have clip 1 control the rack in Reason song 1 and clip 2 on the same track controls the rack in Reason song 2.
 
 You can use up to eight different Reason devices or songs per Ableton Live track.
+
+## To do
+
+- [x] Note ON
+- [x] Note OFF
+- [ ] Modulation wheel (CC #1)
+- [ ] Mixer level (CC #7)
+- [ ] Enabled (CC #9)
+- [ ] Rotary 1 (CC #71)
+- [ ] Rotary 2 (CC #72)
+- [ ] Rotary 3 (CC #73)
+- [ ] Rotary 4 (CC #74)
+- [ ] Button 1 (CC #75)
+- [ ] Button 2 (CC #76)
+- [ ] Button 3 (CC #77)
+- [ ] Button 4 (CC #78)
+- [ ] Sustain
+- [ ] Expression
+- [ ] Breath controller
+- [ ] Pitch bend
+- [ ] Aftertouch
