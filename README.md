@@ -46,5 +46,5 @@ You can use up to eight different Reason devices or songs per Ableton Live track
 - [ ] Sustain
 - [ ] Expression
 - [ ] Breath controller
-- [ ] Pitch bend
+- [x] Pitch bend
 - [ ] Aftertouch
